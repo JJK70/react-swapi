@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { getAllStarships } from "../../services/sw-api";
+import { Link } from "react-router-dom";
 
 const StarshipPage = () => {
   const [starships, setStarships] = useState([])
@@ -15,18 +15,22 @@ const StarshipPage = () => {
 
   return (
     <>
-      <div>
-        <h3>STAR WARS STARSHIPS</h3>
-        <div starshipName='icon-container'>
-          {starships.map(starship =>
-          <Link key={starship.name} to='/starship' state={{starship}} >
-            <div className="ship-div">
-              {starship.name}
-            </div>
-          </Link>)}
+    <h3>Ships</h3>
+    {starships.length ?
+    <>
+      {starships.map(starship =>
+        <div key={starship.index}>
+          <Link to="/starship" state={{starship}}>{starship.name}</Link>
         </div>
-      </div>
+      )}
     </>
+    :
+    <>
+      <h4>Loading Starship details</h4>
+    </>
+    }
+  </>
+
   )
 }
 
