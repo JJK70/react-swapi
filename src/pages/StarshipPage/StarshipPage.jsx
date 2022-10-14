@@ -15,12 +15,12 @@ const StarshipPage = () => {
 
   return (
     <>
-    <h3>Ships</h3>
+    <h3 class="header">Ships</h3>
     {starships.length ?
     <>
       {starships.map(starship =>
-        <div key={starship.index}>
-          <Link to="/starship" state={{starship}}>{starship.name}</Link>
+        <div class="starship" key={starship.index}>
+          <Link class="App-link" to="/starship" state={{starship}}>{starship.name}</Link>
         </div>
       )}
     </>
